@@ -1,17 +1,21 @@
 ﻿@model IEnumerable<RESTCountries.Models.Country>
 
 
-<div class="text-center">
-    <h1 class="display-4">Hello</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">Presh test</a>.</p>
-</div>
-
-<div class="text-center">
+<div><b>Countries</b><br /></div>
+<table class="table table-bordered table-responsive table-hover">
     <tr>
-        <th></th>
-        @foreach (var country in Model)
-        {
-            <th>@country.Name</th>
-        }
+        <th>Country Name</th>
+        <th>Country Region</th>
+        <th>Country subregion</th>
+        
     </tr>
-</div>
+    @foreach (var country in Model)
+    {
+        <tr>
+            <td asp-controller="Country" asp-action="Country" asp-route-id="@country.Alpha3Code">@country.Name</td>
+            <td>@country.Region</td>
+            <td>@country.Subregion</td>
+        </tr>
+
+    }
+</table>  

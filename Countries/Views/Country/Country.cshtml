@@ -1,0 +1,28 @@
+﻿@model IEnumerable<RESTCountries.Models.Country>
+
+
+<div><b>Countries</b><br /></div>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Country Name</th>
+        <th>Country Capital City</th>
+        <th>Country Totatl Population</th>
+        <th>Country official Currencies</th>
+        <th>Country official Languages</th>
+        <th>Country Neibouring Countries</th>
+
+
+    </tr>
+    @foreach (var country in Model)
+    {
+<tr>
+    <td>@country.Name</td>
+    <td>@country.Capital</td>
+    <td>@country.Population</td>
+    <td>@country.Currencies</td>
+    <td>@country.Languages</td>
+    <td>@country.Borders</td>
+</tr>
+
+    }
+</table>  

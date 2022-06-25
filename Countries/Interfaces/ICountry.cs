@@ -11,7 +11,7 @@ namespace Countries.Interfaces
     {
         Task<IEnumerable<RESTCountries.Models.Country>> GetAllCountriesAsync();
 
-        Task<Country> GetCountryAync(string countryCode);
+        Task<RESTCountries.Models.Country> GetCountryAync(string countryCode);
 
         Task<Region> GetRegionAsync(string regionName);
 

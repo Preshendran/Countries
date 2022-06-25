@@ -22,5 +22,12 @@ namespace Countries.Controllers
             var countries = await _countryManager.GetAllCountriesAsync();
             return View(countries);
         }
+
+        
+        public async Task<IActionResult> Country(string CountryCode)
+        {
+            var country = await _countryManager.GetCountryAync(CountryCode);
+            return View(country);
+        }
     }
 }
