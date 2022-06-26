@@ -16,9 +16,10 @@ namespace Countries.Controllers
             _countryManager = countryManager;
         }
 
-        public IActionResult Index(string regionName)
+        [Route("Region/{regionName}")]
+        public async Task<IActionResult> Index(string regionName)
         {
-            var region = _countryManager.GetRegionAsync(regionName);
+            var region = await _countryManager.GetRegionAsync(regionName);
             return View(region);
         }
     }

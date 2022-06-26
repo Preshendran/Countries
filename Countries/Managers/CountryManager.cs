@@ -46,22 +46,25 @@ namespace Countries.Managers
         public async Task<Region> GetRegionAsync(string regionName)
         {
             var countries = await GetAllCountriesAsync();
-            
+
             var region = countries.Where(x => x.Region == regionName);
-            var totalRegionPopulation = region.Sum(x => x.Population);
-            
+
+            int totalRegionPopulation = 0;
+            foreach (var country in region)
+            {
+                totalRegionPopulation += country.Population;
+            }
+
             IEnumerable<RESTCountries.Models.Country> countriesinRegion = new List<RESTCountries.Models.Country>();
             countriesinRegion = countries.Where(x => x.Region == regionName).ToList();
-            
-            IEnumerable<Subregion> subregions = new List<Subregion>();
-            subregions = (IEnumerable<Subregion>)region.Select(x => x.Subregion).ToList();
 
+            var subregions = region.Select(x => x.Subregion).ToList().Distinct();
 
             var newRegion = new Region
             {
-                RegionName = region.Select(x => x.Region).ToString(),
+                RegionName = regionName,
                 TotalPopulation = totalRegionPopulation,
-                CountriesInRegion = (IEnumerable<Country>)countriesinRegion,
+                CountriesInRegion = (IEnumerable<RESTCountries.Models.Country>)countriesinRegion,
                 Subregions = subregions
             };
 

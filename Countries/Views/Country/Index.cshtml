@@ -7,15 +7,17 @@
         <th>Country Name</th>
         <th>Country Region</th>
         <th>Country subregion</th>
-        
+
     </tr>
     @foreach (var country in Model)
     {
         <tr>
             <td>
-            <a href="Country/Country/@country.Alpha3Code">@country.Name</a>
+                <a href="Country/Country/@country.Alpha3Code">@country.Name</a>
             </td>
-            <td>@country.Region</td>
+            <td>
+                <a href="Region/@country.Region">@country.Region</a>
+            </td>
             <td>@country.Subregion</td>
         </tr>
 
