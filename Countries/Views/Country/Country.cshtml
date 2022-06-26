@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RESTCountries.Models.Country>
+﻿@model RESTCountries.Models.Country
 
 
 <div><b>Countries</b><br /></div>
@@ -13,16 +13,31 @@
 
 
     </tr>
-    @foreach (var country in Model)
-    {
-<tr>
-    <td>@country.Name</td>
-    <td>@country.Capital</td>
-    <td>@country.Population</td>
-    <td>@country.Currencies</td>
-    <td>@country.Languages</td>
-    <td>@country.Borders</td>
-</tr>
 
-    }
+    <tr>
+        <td>@Model.Name</td>
+        <td>@Model.Capital</td>
+        <td>@Model.Population</td>
+        @foreach (var currency in Model.Currencies)
+        {
+            <td><b>Name: </b> @currency.Name <br> <b>Symbol: </b> @currency.Symbol</td>
+        }
+        <td>
+            @foreach (var languages in Model.Languages)
+            {
+                @languages.Name <br>
+
+            }
+        </td>
+
+        <td>
+            @foreach (var border in Model.Borders)
+            {
+            <a href="@border.ToString()">@border.ToString()</a>  <br>
+            }
+        </td>
+
+    </tr>
+
+
 </table>  

@@ -12,7 +12,7 @@
     @foreach (var country in Model)
     {
         <tr>
-            <td asp-controller="Country" asp-action="Country" asp-route-id="@country.Alpha3Code">@country.Name</td>
+            <td href="Country/Country/@country.Alpha3Code">@country.Name</td>
             <td>@country.Region</td>
             <td>@country.Subregion</td>
         </tr>

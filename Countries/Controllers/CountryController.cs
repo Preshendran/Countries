@@ -23,7 +23,7 @@ namespace Countries.Controllers
             return View(countries);
         }
 
-        
+        [Route("Country/Country/{CountryCode}")]
         public async Task<IActionResult> Country(string CountryCode)
         {
             var country = await _countryManager.GetCountryAync(CountryCode);
