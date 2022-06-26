@@ -18,22 +18,28 @@
         <td>@Model.Name</td>
         <td>@Model.Capital</td>
         <td>@Model.Population</td>
+        @if (Model.Currencies != null)
+        {
         @foreach (var currency in Model.Currencies)
         {
             <td><b>Name: </b> @currency.Name <br> <b>Symbol: </b> @currency.Symbol</td>
         }
-        <td>
-            @foreach (var languages in Model.Languages)
-            {
-                @languages.Name <br>
+        }
 
-            }
+        <td>
+        @foreach (var languages in Model.Languages)
+        {
+          @languages.Name <br>
+        }
         </td>
 
         <td>
+            @if (Model.Borders != null)
+            {
             @foreach (var border in Model.Borders)
             {
             <a href="@border.ToString()">@border.ToString()</a>  <br>
+            }
             }
         </td>
 
